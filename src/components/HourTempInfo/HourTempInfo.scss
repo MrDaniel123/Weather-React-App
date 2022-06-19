@@ -1,0 +1,23 @@
+.hour-temp-info {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 90px;
+	margin: 0 5px;
+	padding: 0 20px;
+
+	&__icon {
+		font-size: 4rem;
+		color: yellow;
+	}
+
+	&__temp {
+		font-size: 1.8rem;
+	}
+
+	&__hour {
+		font-size: 1.3rem;
+	}
+}
