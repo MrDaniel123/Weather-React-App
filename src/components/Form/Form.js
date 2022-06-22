@@ -4,6 +4,7 @@ import './Form.scss';
 
 const Form = props => {
 	const [city, setCity] = useState('');
+	const [showFormError, setShowFormError] = useState(false);
 
 	const handleInputValidate = e => {
 		setCity(e.target.value);
@@ -13,6 +14,16 @@ const Form = props => {
 		props.handlegeGetCityWeatcher(city);
 		setCity('');
 	};
+
+	const handleValidateForm = () => {
+		if (city.length < 3) {
+			setShowFormError(true);
+		} else {
+			setShowFormError(false);
+			handleSendRequest();
+		}
+	};
+
 	return (
 		<div className='form-wrapper'>
 			<input
@@ -22,9 +33,15 @@ const Form = props => {
 				value={city}
 				onChange={e => handleInputValidate(e)}
 			/>
-			<button className='form-wrapper__btn' onClick={handleSendRequest}>
+			<button className='form-wrapper__btn' onClick={handleValidateForm}>
 				Szukaj
 			</button>
+
+			{showFormError && (
+				<p className='form-wrapper__error'>
+					City name must have a minimum 3 characters
+				</p>
+			)}
 		</div>
 	);
 };

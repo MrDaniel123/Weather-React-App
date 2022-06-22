@@ -1,0 +1,37 @@
+.weatcher-day-info {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(6, 1fr);
+	justify-items: center;
+	align-items: center;
+	height: 180px;
+	width: 25%;
+	min-width: 75px;
+	max-width: 160px;
+	// border: 1px solid white;
+	margin: 10px;
+	color: white;
+
+	&__hour {
+		grid-row: 1 / 2;
+		font-size: 16px;
+		color: rgba(255, 255, 255, 0.5);
+	}
+
+	&__temp {
+		grid-row: 2 / 3;
+		font-size: 18px;
+	}
+
+	&__icon {
+		grid-row: 3 / 6;
+		font-size: 50px;
+		color: rgba(255, 255, 255, 0.75);
+	}
+
+	&__wind {
+		grid-row: 6 / 7;
+		font-size: 16px;
+		color: rgba(255, 255, 255, 0.5);
+	}
+}

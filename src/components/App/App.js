@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react';
 
 import WeatcherInfo from '../../components/WeatcherInfo/WeatcherInfo';
 import Form from '../Form/Form';
-import WeatcherHoursInfo from '../WeatcherHoursInfo/WeatcherHoursInfo';
+import WeatcherForNextDays from '../WeatcherForNextDays/WeatcherForNextDays';
 import LoadingCircle from '../LoadingCircle/LoadingCircle';
 import GeolocationInfo from '../GeolocationInfo/GeolocationInfo';
+import WrongCityInfo from '../WrongCityInfo/WrongCityInfo';
 
 import './App.scss';
 
 function App() {
 	const [weatcherData, setWeatcherData] = useState();
-	const [weatcherDataIsLoading, setWeatcherDataIsLoading] = useState();
+	const [weatcherDataIsLoading, setWeatcherDataIsLoading] = useState(false);
 	const [geolocationAllowet, setGeolocationAllowet] = useState(true);
+	const [wrongCityName, setWrongCityName] = useState(false);
 
 	useEffect(() => {
 		const getGeoPosition = () => {
@@ -31,6 +33,8 @@ function App() {
 		};
 
 		const getWeatcherInfo = geolocation => {
+			console.log(geolocation);
+
 			const [lat, lon] = geolocation;
 
 			fetch(
@@ -66,14 +70,27 @@ function App() {
 	}, []);
 
 	const handleGetWeatcherInOtcherCity = city => {
-		console.log(city);
-
 		fetch(
 			`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=afa8c092c0ac34e52fe43eb6523d07f6&units=metric`
 		)
 			.then(response => response.json())
-			.then(response => setWeatcherData(response))
-			.then(response => console.log(response))
+			.then(response => {
+				if (response.cod !== '200') {
+					return false;
+				} else {
+					return response;
+				}
+			})
+			.then(response => {
+				if (response) {
+					setWrongCityName(false);
+					setWeatcherData(response);
+					setWeatcherDataIsLoading(true);
+					setGeolocationAllowet(true);
+				} else {
+					setWrongCityName(true);
+				}
+			})
 			.catch(err => console.error(err));
 	};
 
@@ -84,14 +101,18 @@ function App() {
 	return (
 		<div className='app-wrapper'>
 			<Form handlegeGetCityWeatcher={handlegeGetCityWeatcher} />
+
 			{!geolocationAllowet ? <GeolocationInfo /> : null}
+
+			{wrongCityName ? <WrongCityInfo /> : null}
+
 			{weatcherDataIsLoading ? (
 				<WeatcherInfo data={weatcherData} />
 			) : (
 				<LoadingCircle />
 			)}
 
-			{weatcherDataIsLoading && <WeatcherHoursInfo data={weatcherData} />}
+			{weatcherDataIsLoading && <WeatcherForNextDays data={weatcherData} />}
 		</div>
 	);
 }
