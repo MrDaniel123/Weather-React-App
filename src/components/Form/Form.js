@@ -29,12 +29,12 @@ const Form = props => {
 			<input
 				type='text'
 				className='form-wrapper__input'
-				placeholder='Wpisz miastio'
+				placeholder='City name'
 				value={city}
 				onChange={e => handleInputValidate(e)}
 			/>
 			<button className='form-wrapper__btn' onClick={handleValidateForm}>
-				Szukaj
+				Search
 			</button>
 
 			{showFormError && (
