@@ -3,13 +3,14 @@
 	position: relative;
 	width: 80px;
 	height: 80px;
+	margin-top: 45%;
 }
 .loading-circle div {
 	display: inline-block;
 	position: absolute;
 	left: 8px;
 	width: 16px;
-	background: #fff;
+	background: rgb(0, 0, 0);
 	animation: loading-circle 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
 .loading-circle div:nth-child(1) {

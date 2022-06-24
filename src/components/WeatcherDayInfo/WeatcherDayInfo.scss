@@ -10,12 +10,12 @@
 	max-width: 160px;
 	// border: 1px solid white;
 	margin: 10px;
-	color: white;
+	color: rgb(14, 14, 14);
 
 	&__hour {
 		grid-row: 1 / 2;
 		font-size: 16px;
-		color: rgba(255, 255, 255, 0.5);
+		color: rgb(14, 14, 14);
 	}
 
 	&__temp {
@@ -26,12 +26,12 @@
 	&__icon {
 		grid-row: 3 / 6;
 		font-size: 50px;
-		color: rgba(255, 255, 255, 0.75);
+		color: rgb(14, 14, 14);
 	}
 
 	&__wind {
 		grid-row: 6 / 7;
 		font-size: 16px;
-		color: rgba(255, 255, 255, 0.5);
+		color: rgb(14, 14, 14);
 	}
 }
