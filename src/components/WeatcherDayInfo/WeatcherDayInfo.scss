@@ -4,7 +4,7 @@
 	grid-template-rows: repeat(6, 1fr);
 	justify-items: center;
 	align-items: center;
-	height: 180px;
+	height: 22vh;
 	width: 25%;
 	min-width: 75px;
 	max-width: 160px;
@@ -22,7 +22,7 @@
 		font-size: 18px;
 	}
 
-	&__icon {
+	&__icon-wrapper {
 		grid-row: 3 / 6;
 		font-size: 50px;
 		color: rgb(14, 14, 14);

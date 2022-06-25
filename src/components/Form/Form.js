@@ -24,6 +24,12 @@ const Form = props => {
 		}
 	};
 
+	const handleEnterKeyPress = e => {
+		if (e.keyCode === 13) {
+			handleValidateForm();
+		}
+	};
+
 	return (
 		<div className='form-wrapper'>
 			<input
@@ -32,8 +38,12 @@ const Form = props => {
 				placeholder='City name'
 				value={city}
 				onChange={e => handleInputValidate(e)}
+				onKeyDownCapture={handleEnterKeyPress}
 			/>
-			<button className='form-wrapper__btn' onClick={handleValidateForm}>
+			<button
+				className='form-wrapper__btn'
+				onClick={e => handleValidateForm(e)}
+				type='submit'>
 				Search
 			</button>
 

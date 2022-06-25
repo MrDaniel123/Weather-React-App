@@ -12,6 +12,8 @@ import './App.scss';
 import housePNG from '../../assets/House.png';
 import treePNG from '../../assets/Tree.png';
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 function App() {
 	const [weatcherData, setWeatcherData] = useState();
 	const [weatcherDataIsLoading, setWeatcherDataIsLoading] = useState(false);
@@ -27,12 +29,6 @@ function App() {
 	});
 
 	useEffect(() => {
-		if ('geolocation' in navigator) {
-			console.log('dzia');
-		} else {
-			console.log('nie dzia');
-		}
-
 		const getGeoPosition = () => {
 			return new Promise((resolve, reject) => {
 				const error = () => {
@@ -53,7 +49,7 @@ function App() {
 			const [lat, lon] = geolocation;
 
 			fetch(
-				`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=afa8c092c0ac34e52fe43eb6523d07f6&units=metric`
+				`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
 			)
 				.then(response => response.json())
 				.then(response => {
@@ -86,7 +82,6 @@ function App() {
 
 	useEffect(() => {
 		if (weatcherData) {
-			// console.log(weatcherData.list[0].weather[0].main);
 			if (weatcherData.list[0].weather[0].main === 'Clear') {
 				setBackgroundStyle({
 					background: `linear-gradient(179.7deg, rgb(195 181 147) 0.26%, rgb(165 169 26) 99.75%)`,
@@ -105,7 +100,7 @@ function App() {
 
 	const handleGetWeatcherInOtcherCity = city => {
 		fetch(
-			`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=afa8c092c0ac34e52fe43eb6523d07f6&units=metric`
+			`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`
 		)
 			.then(response => response.json())
 			.then(response => {

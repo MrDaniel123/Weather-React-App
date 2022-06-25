@@ -5,31 +5,41 @@
 	grid-template-columns: 1fr;
 	grid-template-rows: repeat(7, 1fr);
 	width: 90%;
-	height: 40%;
-	// margin-top: 120px;
+	height: 45vh;
 	z-index: 1;
-	margin-top: 15%;
+	margin-top: 10px;
 
 	color: rgba(33, 33, 33, 0.97);
 
 	&__location {
 		grid-row: 1;
 		font-size: 2rem;
+		padding: 10px;
 	}
 	&__date {
 		font-size: 2rem;
+		padding: 10px;
 	}
 
 	&__temperature {
 		border-radius: 15px;
 		padding: 30px;
 		grid-row: 3/7;
-		font-size: 8rem;
+		font-size: 4rem;
 		background-color: rgba(0, 0, 0, 0.15);
 		box-shadow: 4px 4px 7px 0 #2e2e2e;
+
+		@media (min-width: 270px) {
+			font-size: 6rem;
+		}
+
+		@media (min-width: 350px) {
+			font-size: 8rem;
+		}
 	}
 
 	&__clouds {
 		font-size: 3rem;
+		padding: 10px;
 	}
 }
