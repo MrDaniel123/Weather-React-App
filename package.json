@@ -2,7 +2,7 @@
 	"name": "app",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://mrdaniel123.github.io/React-Weatcher-App/",
+	"homepage": "https://mrdaniel123.github.io/Weather-React-App/",
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^6.1.1",
 		"@fortawesome/free-regular-svg-icons": "^6.1.1",
