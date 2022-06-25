@@ -1,1 +1,1 @@
-https://mrdaniel123.github.io/React-Weatcher-App/
+https://mrdaniel123.github.io/Weather-React-App/
